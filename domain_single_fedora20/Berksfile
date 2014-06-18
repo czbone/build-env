@@ -1,0 +1,8 @@
+site :opscode
+
+cookbook 'php'
+cookbook 'ntp'
+cookbook 'selinux'
+cookbook 'sysstat'
+cookbook 'openssh'
+cookbook 'apt'

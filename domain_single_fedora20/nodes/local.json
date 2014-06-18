@@ -1,0 +1,10 @@
+{
+  "mariadb": {
+    "server_root_password": "12345",
+    "server_repl_password": "12345",
+    "server_debian_password": "12345"
+  },
+  "run_list":[
+    "role[web-test]"
+  ]
+}

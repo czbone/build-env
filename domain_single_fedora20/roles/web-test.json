@@ -1,0 +1,23 @@
+{
+  "name": "magic3",
+  "json_class": "Chef::Role",
+  "chef_type": "role",
+
+  "run_list":[
+    "recipe[selinux::disabled]",
+    "recipe[fedora-env::preinstall]",
+    "recipe[firewalld]",
+
+//    "recipe[apache2]",	
+    "recipe[simple-apache]",
+    "recipe[simple-apache::mod_php5]",
+    "recipe[php]",
+    "recipe[mariadb::server]",
+    "recipe[mariadb::client]",
+    "recipe[ntp]",
+    "recipe[sysstat]",
+    "recipe[openssh]",
+    "recipe[fedora-env]"
+  ]
+}
+
