@@ -8,6 +8,34 @@
 #
 #******************************************************
 #
+# 追加パッケージインストール
+#
+# ・wget
+# ・mailコマンド
+# ・expectパッケージ(mkpasswd等)
+#
+#******************************************************
+package "wget" do
+  action :install
+end
+package "mailx" do
+  action :install
+  package_name value_for_platform(
+    ["redhat", "centos", "scientific"] => { "default" => "mailx" },
+    ["debian", "ubuntu" ] => { "default" => "bsd-mailx" }
+  )
+end
+package "expect" do
+  action :install
+end
+package "zip" do
+  action :install
+end
+package "unzip" do
+  action :install
+end
+#******************************************************
+#
 # 環境構築前に実行する処理
 #
 # ・RPMforgeリポジトリ追加

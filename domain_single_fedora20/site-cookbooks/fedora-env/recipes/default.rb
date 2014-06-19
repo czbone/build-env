@@ -7,6 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 include_recipe "php"
+#include_recipe "phpmyadmin"
 
 #%W[
 #  #{node['apache']['dir']}/ssl
@@ -53,4 +54,38 @@ bash "open_default_port" do
 #  notifies :restart, 'service[firewalld]'
 end
 
-
+#phpmyadmin_db 'Test DB' do
+#    host '127.0.0.1'
+#    port 3306
+#    username 'root'
+#    password 'password'
+#    hide_dbs %w{ information_schema mysql phpmyadmin performance_schema }
+#end
+#******************************************************
+#
+# phpMyAdminインストール
+#
+#******************************************************
+#remote_file "#{Chef::Config[:file_cache_path]}/phpMyAdmin-#{node['fedora-env']['phpmyadmin_version']}-all-languages.tar.gz" do
+#  action :create_if_missing
+#  source "http://downloads.sourceforge.net/phpmyadmin/phpMyAdmin-#{node['fedora-env']['phpmyadmin_version']}-all-languages.tar.gz"
+#  notifies :run, "bash[install_phpmyadmin]", :immediately
+##  not_if { ::File.exists?("#{Chef::Config[:file_cache_path]}/phpMyAdmin-#{node['fedora-env']['phpmyadmin_version']}-all-languages.tar.gz") }
+##  checksum node['phpmyadmin']['checksum']
+#end
+#bash "install_phpmyadmin" do
+#  user "root"
+#  cwd Chef::Config[:file_cache_path]
+#  code <<-EOH
+#    tar xzf phpMyAdmin-#{node['fedora-env']['phpmyadmin_version']}-all-languages.tar.gz
+#    mv phpMyAdmin-#{node['fedora-env']['phpmyadmin_version']}-all-languages #{node['fedora-env']['phpmyadmin_dir']}
+#  EOH
+#  action :nothing
+#  not_if { ::File.exists?("#{node['fedora-env']['phpmyadmin_dir']}") }
+#end
+#template "#{node['fedora-env']['phpmyadmin_dir']}/config.inc.php" do
+#  source   'phpmyadmin_config.inc.php.erb'
+#  owner    'root'
+#  group    'root'
+#  mode     '0644'
+#end

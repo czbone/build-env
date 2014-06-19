@@ -1,5 +1,5 @@
 {
-  "name": "magic3",
+  "name": "web-test",
   "json_class": "Chef::Role",
   "chef_type": "role",
 
@@ -17,6 +17,7 @@
     "recipe[ntp]",
     "recipe[sysstat]",
     "recipe[openssh]",
+    "recipe[simple-phpmyadmin]",
     "recipe[fedora-env]"
   ]
 }

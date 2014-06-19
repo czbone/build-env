@@ -37,9 +37,10 @@ default['php']['upload_max_filesize'] = '2M'
 
 #******************************************************
 #
-# MariaDBの設定
+# Apacheの設定
 #
 #******************************************************
+default['apache']['package']     = 'httpd'
 
 #default['apache']['default_modules'] = %w[
 #  status alias auth_basic authn_core authn_file authz_core authz_groupfile authz_host authz_user autoindex
@@ -50,3 +51,11 @@ default['php']['upload_max_filesize'] = '2M'
 #  status alias auth_basic authn_core authn_file authz_core authz_groupfile authz_host authz_user autoindex
 #  dir env mime negotiation setenvif
 #]
+#default['phpmyadmin']['version'] = '4.2.3'
+#default['phpmyadmin']['checksum'] = 'e3e37a51dda05de6071592f8bcdd6890a49227c2'
+#default['phpmyadmin']['fpm'] = false
+#  default['phpmyadmin']['upload_dir'] = '/var/lib/php/uploads'
+#  default['phpmyadmin']['save_dir'] = '/var/lib/php/uploads'
+
+#default['fedora-env']['phpmyadmin_version']           = '4.2.3'
+#default['fedora-env']['phpmyadmin_dir'] = '/usr/share/phpMyAdmin'

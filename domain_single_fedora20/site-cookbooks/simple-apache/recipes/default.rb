@@ -7,9 +7,12 @@
 # Apache 2.0 License.
 #
 
-package 'httpd'
+#package 'apache'
+package 'apache' do
+  package_name node['apache']['package']
+end
 
-service "httpd" do
+service "apache" do
   service_name "httpd.service"
   provider Chef::Provider::Service::Systemd
   action [:enable, :start]
