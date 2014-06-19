@@ -18,4 +18,4 @@ service "apache" do
   action [:enable, :start]
 end
 
-#firewalld_rule 80
+firewalld_rule 80

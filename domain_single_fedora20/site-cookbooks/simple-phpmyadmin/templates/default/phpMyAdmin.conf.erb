@@ -12,7 +12,8 @@ Alias /phpmyadmin /usr/share/phpMyAdmin
    <IfModule mod_authz_core.c>
      # Apache 2.4
      <RequireAny>
-       Require ip 127.0.0.1
+       #Require ip 127.0.0.1
+	   Require ip 192.168.
        Require ip ::1
      </RequireAny>
    </IfModule>
