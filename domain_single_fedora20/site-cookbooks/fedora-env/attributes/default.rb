@@ -11,6 +11,7 @@
 # 構築環境
 #
 #******************************************************
+default['tz'] = 'Asia/Tokyo'
 case node["platform_family"]
   when "rhel", "fedora"
     if node['kernel']['machine'] == 'x86_64'
@@ -19,6 +20,7 @@ case node["platform_family"]
       default['fedora-env']['rpmforge-release']             = 'rpmforge-release-0.5.3-1.el6.rf.i686.rpm'
   end
 end
+
 #******************************************************
 #
 # PHPの設定
@@ -30,9 +32,9 @@ end
 default['php']['packages'] = ['php', 'php-pear', 'php-mcrypt', 'php-mbstring', 'php-gd', 'php-mysql', 'php-xml']
 
 # デフォルト値設定
-default['php']['date.timezone'] = 'Asia/Tokyo'
-default['php']['disable_functions'] = 'popen'
-default['php']['post_max_size'] = '8M'
+default['php']['date.timezone']       = 'Asia/Tokyo'
+default['php']['disable_functions']   = 'popen'
+default['php']['post_max_size']       = '8M'
 default['php']['upload_max_filesize'] = '2M'
 
 #******************************************************
@@ -41,21 +43,3 @@ default['php']['upload_max_filesize'] = '2M'
 #
 #******************************************************
 default['apache']['package']     = 'httpd'
-
-#default['apache']['default_modules'] = %w[
-#  status alias auth_basic authn_core authn_file authz_core authz_groupfile authz_host authz_user autoindex
-#  dir env mime negotiation setenvif unixd log_config logio
-#]
-# Default module
-#default['apache']['default_modules'] = %w[
-#  status alias auth_basic authn_core authn_file authz_core authz_groupfile authz_host authz_user autoindex
-#  dir env mime negotiation setenvif
-#]
-#default['phpmyadmin']['version'] = '4.2.3'
-#default['phpmyadmin']['checksum'] = 'e3e37a51dda05de6071592f8bcdd6890a49227c2'
-#default['phpmyadmin']['fpm'] = false
-#  default['phpmyadmin']['upload_dir'] = '/var/lib/php/uploads'
-#  default['phpmyadmin']['save_dir'] = '/var/lib/php/uploads'
-
-#default['fedora-env']['phpmyadmin_version']           = '4.2.3'
-#default['fedora-env']['phpmyadmin_dir'] = '/usr/share/phpMyAdmin'
