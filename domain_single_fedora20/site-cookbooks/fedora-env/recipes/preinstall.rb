@@ -67,13 +67,13 @@ end
 # NetworkManagerの停止
 #
 #******************************************************
-#execute "Disabling Network manager" do
-#  command <<-'EOH'
-#    chkconfig network on
-#    chkconfig NetworkManager off
-#    service NetworkManager stop
-#  EOH
-#end
+execute "Disabling Network manager" do
+  command <<-'EOH'
+    chkconfig network on
+    chkconfig NetworkManager off
+    service NetworkManager stop
+  EOH
+end
 #******************************************************
 #
 # FirewalldのMask状態の解除
