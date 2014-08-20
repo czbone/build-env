@@ -9,6 +9,7 @@
     "recipe[firewalld]",
 
     "recipe[timezone-ii::fedora]",
+    "recipe[postfix]",
 //    "recipe[apache2]",	
     "recipe[simple-apache]",
     "recipe[simple-apache::mod_php5]",
