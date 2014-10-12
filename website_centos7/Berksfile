@@ -2,7 +2,7 @@ site :opscode
 
 cookbook 'simple_iptables'
 cookbook 'apache2', '~> 2.0.0'
-#cookbook 'mysql'
+cookbook 'mariadb'
 cookbook 'php'
 cookbook 'ntp'
 cookbook 'selinux'

@@ -5,6 +5,7 @@
   
   "run_list":[
     "recipe[selinux::disabled]",
+    "recipe[centos-env::preinstall]",
 
     "recipe[apache2]",
     "recipe[apache2::mod_ssl]",
@@ -13,6 +14,8 @@
     "recipe[apache2::mod_cgi]",
     "recipe[apache2::mod_rewrite]",
     "recipe[apache2::mod_alias]",
+    "recipe[mariadb::server]",
+    "recipe[mariadb::client]",
     "recipe[php]",
     "recipe[ntp]",
     "recipe[sysstat]",

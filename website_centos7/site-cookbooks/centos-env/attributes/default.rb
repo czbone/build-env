@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: fedora-env
+# Cookbook Name:: centos-env
 # Recipe:: default
 #
 # Copyright 2014, YOUR_COMPANY_NAME
@@ -12,14 +12,15 @@
 #
 #******************************************************
 default['tz'] = 'Asia/Tokyo'
-#case node["platform_family"]
-#  when "rhel", "fedora"
+case node["platform_family"]
+  when "rhel", "fedora"
 #    if node['kernel']['machine'] == 'x86_64'
-#	  default['fedora-env']['rpmforge-release']             = 'rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm'
+#	  default['centos-env']['rpmforge-release']             = 'rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm'
+	  default['centos-env']['rpmforge-release']             = 'rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm'
 #    else
-#      default['fedora-env']['rpmforge-release']             = 'rpmforge-release-0.5.3-1.el6.rf.i686.rpm'
-#  end
-#end
+#      default['centos-env']['rpmforge-release']             = 'rpmforge-release-0.5.3-1.el6.rf.i686.rpm'
+#    end
+end
 
 #******************************************************
 #
