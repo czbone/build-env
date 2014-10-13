@@ -63,6 +63,39 @@ bash "pre_mariadb" do
   user "root"
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
-    rpm -e --nodeps mariadb-libs
+    rpm -q mariadb-libs
+	if [ "$?" -eq 0 ] ; then
+      rpm -e --nodeps mariadb-libs
+	fi
   EOH
+end
+
+#**************************************************************************************************
+#
+# 追加パッケージインストール
+#
+# ・wget
+# ・mailコマンド
+# ・expectパッケージ(mkpasswd等)
+# ・zip,unzip
+#
+#**************************************************************************************************
+package "wget" do
+  action :install
+end
+package "mailx" do
+  action :install
+  package_name value_for_platform(
+    ["redhat", "centos", "scientific"] => { "default" => "mailx" },
+    ["debian", "ubuntu" ] => { "default" => "bsd-mailx" }
+  )
+end
+package "expect" do
+  action :install
+end
+package "zip" do
+  action :install
+end
+package "unzip" do
+  action :install
 end
