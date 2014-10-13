@@ -6,12 +6,11 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-
 #**************************************************************************************************
 #
 # Magic3環境構築前に実行する処理
 #
-# ・RPMforgeリポジトリ追加
+# ・RPMforge,EPEL,REMIリポジトリ追加
 #
 #**************************************************************************************************
 yum_package "yum-plugin-priorities" do
@@ -35,22 +34,18 @@ end
 yum_package "rpmforge-release" do
   action :upgrade
 end
-
-#yum_key 'RPM-GPG-KEY-MariaDB' do
-#  url 'https://yum.mariadb.org/RPM-GPG-KEY-MariaDB'
-#  action :add
-#end
-#yum_repository 'MariaDB' do
-#  repo_name 'MariaDB'
-#  url 'http://yum.mariadb.org/10.0/centos6-amd64'
-#  key 'RPM-GPG-KEY-MariaDB'
-#  action :create
-#end
 template "/etc/yum.repos.d/mariadb.repo" do
   source "MariaDB.repo.erb"
   mode 00644
   owner "root"
   group "root"
+end
+yum_package "epel-release" do
+  action :install
+end
+rpm_package "remi-release_package" do
+  source "http://rpms.famillecollet.com/enterprise/remi-release-7.rpm"
+  action :nothing
 end
 #**************************************************************************************************
 #
@@ -72,6 +67,20 @@ end
 package "MySQL-shared" do
   action :install
 end
+#******************************************************
+#
+# 不要なサービスの停止
+#
+# ・NetworkManagerの停止
+#
+#******************************************************
+#execute "Disabling Network manager" do
+#  command <<-'EOH'
+#    chkconfig network on
+#    chkconfig NetworkManager off
+#    service NetworkManager stop
+#  EOH
+#end
 #**************************************************************************************************
 #
 # 追加パッケージインストール

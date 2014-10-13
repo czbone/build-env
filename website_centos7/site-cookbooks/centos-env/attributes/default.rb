@@ -26,6 +26,7 @@ case node["platform_family"]
 #      default['centos-env']['rpmforge-release']             = 'rpmforge-release-0.5.3-1.el6.rf.i686.rpm'
 #    end
 end
+#default['yum']['epel']['enabled'] = true
 
 #******************************************************
 #
@@ -54,3 +55,6 @@ default['php']['upload_max_filesize'] = '2M'
 #  status alias auth_basic authn_file authz_groupfile authz_host authz_user autoindex
 #  dir env mime negotiation setenvif  filter ssl php5
 #]
+# Webサイトの管理者メールアドレス
+#default['apache']['contact'] = 'webmaster@localdomain'
+default['apache']['default_site_enabled'] = true
