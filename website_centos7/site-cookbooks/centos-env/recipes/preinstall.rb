@@ -69,7 +69,9 @@ bash "pre_mariadb" do
 	fi
   EOH
 end
-
+package "MySQL-shared" do
+  action :install
+end
 #**************************************************************************************************
 #
 # 追加パッケージインストール
@@ -80,9 +82,9 @@ end
 # ・zip,unzip
 #
 #**************************************************************************************************
-package "wget" do
-  action :install
-end
+#package "wget" do
+#  action :install
+#end
 package "mailx" do
   action :install
   package_name value_for_platform(
