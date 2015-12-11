@@ -1,0 +1,10 @@
+site :opscode
+
+cookbook 'simple_iptables'
+cookbook 'apache2'
+cookbook 'mysql'
+cookbook 'php'
+cookbook 'ntp'
+cookbook 'selinux'
+cookbook 'sysstat'
+cookbook 'openssh'
