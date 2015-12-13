@@ -54,19 +54,20 @@ end
 # ・パッケージインストール時にmariadb-libsとのコンフリクトが発生するので削除。
 #
 #**************************************************************************************************
-bash "pre_mariadb" do
-  user "root"
-  cwd Chef::Config[:file_cache_path]
-  code <<-EOH
-    rpm -q mariadb-libs
-	if [ "$?" -eq 0 ] ; then
-      rpm -e --nodeps mariadb-libs
-	fi
-  EOH
-end
-package "MySQL-shared" do
-  action :install
-end
+#bash "pre_mariadb" do
+#  user "root"
+#  cwd Chef::Config[:file_cache_path]
+#  code <<-EOH
+#    rpm -q mariadb-libs
+#	if [ "$?" -eq 0 ] ; then
+#      rpm -e --nodeps mariadb-libs
+#	fi
+#  EOH
+#end
+#package "MySQL-shared" do
+#  action :install
+#end
+
 #******************************************************
 #
 # 不要なサービスの停止

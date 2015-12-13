@@ -1,8 +1,8 @@
 site :opscode
 
 cookbook 'simple_iptables'
-cookbook 'apache2', '~> 2.0.0'
-cookbook 'mariadb'
+cookbook 'apache2'
+cookbook 'mysql'
 cookbook 'php'
 cookbook 'ntp'
 cookbook 'selinux'
