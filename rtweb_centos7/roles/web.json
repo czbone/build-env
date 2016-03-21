@@ -1,13 +1,25 @@
 {
-    "name": "example",
-    "description": "This is an example role defined as JSON",
-    "chef_type": "role",
-    "json_class": "Chef::Role",
-    "default_attributes": {
-    },
-    "override_attributes": {
-    },
-    "run_list": [
-        "recipe[base]"
-    ]
+  "name": "example",
+  "description": "This is an example role defined as JSON",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+  },
+  "override_attributes": {
+  },
+  "run_list": [
+    "recipe[selinux::disabled]",
+    
+    "recipe[apache2]",
+    "recipe[apache2::mod_ssl]",
+    "recipe[apache2::mod_php5]",
+    "recipe[apache2::mod_include]",
+    "recipe[apache2::mod_rewrite]",
+    "recipe[php]",
+    "recipe[ntp]",
+    "recipe[sysstat]",
+    "recipe[openssh]",
+    "recipe[nodejs]",
+    "recipe[base]"
+  ]
 }
