@@ -26,17 +26,18 @@ default['apache']['default_site_enabled'] = true
 #
 # PHP追加モジュール読み込み
 #
-#case node["platform_family"]
-#  when "rhel", "fedora"
-#    if node['platform_version'].to_f < 6 then
-#      default['php']['packages'] = ['php53', 'php-pear', 'php53-mcrypt', 'php53-mbstring', 'php53-gd', 'php53-mysql', 'php53-xml', 'php53-imap']
-#    else
-      default['php']['packages'] = ['php', 'php-pear', 'php-mbstring', 'php-gd', 'php-mysql', 'php-xml', 'php-imap']
-#default['php']['packages'] = ['php', 'php-pear', 'php-mbstring', 'php-gd', 'php-mysql', 'php-xml']
-#    end
-#end
+default['php']['packages'] = ['php', 'php-pear', 'php-mbstring', 'php-gd', 'php-mysql', 'php-xml', 'php-imap']
 
 # デフォルト値設定
 default['php']['date.timezone'] = 'Asia/Tokyo'
 default['php']['post_max_size'] = '20M'
 default['php']['upload_max_filesize'] = '20M'
+
+#******************************************************
+#
+# MySQLの設定
+#
+#******************************************************
+default['mysql']['server_root_password']            = 'root'
+default['mysql']['tunable']['character-set-server'] = 'utf8'
+default['mysql']['tunable']['collation-server']     = 'utf8_general_ci'

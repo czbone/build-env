@@ -6,45 +6,22 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-#mysql_service 'default' do
+mysql_service 'default' do
 #  version '5.5'
-#  initial_root_password ''
-#  action [:create, :start]
-#end
-
-#mysql_client 'default' do
+  initial_root_password "#{node['mysql']['server_root_password']}"
+  socket '/var/lib/mysql/mysql.sock'
+  action [:create, :start]
+end
+#mysql_config 'default' do
+#  source 'my.cnf.erb'
+#  notifies :restart, 'mysql_service[default]'
 #  action :create
 #end
-#******************************************************
-#
-# パッケージレポジトリ追加
-#
-#******************************************************
-yum_package "epel-release" do
-  action :install
+mysql_client 'default' do
+  action :create
 end
-
-#******************************************************
-#
-# 追加パッケージインストール
-#
-# ・mailコマンド
-# ・expectパッケージ(mkpasswd等)
-#
-#******************************************************
-package "mailx" do
-  action :install
-  package_name value_for_platform(
-    ["redhat", "centos", "scientific"] => { "default" => "mailx" },
-    ["debian", "ubuntu" ] => { "default" => "bsd-mailx" }
-  )
-end
-package "expect" do
-  action :install
-end
-package "zip" do
-  action :install
-end
-package "unzip" do
-  action :install
+template "/etc/mysql-default/conf.d/my.cnf" do
+  source "my.cnf.erb"
+  mode 0644
+  notifies :restart, 'mysql_service[default]'
 end
