@@ -25,3 +25,10 @@ template "/etc/mysql-default/conf.d/my.cnf" do
   mode 0644
   notifies :restart, 'mysql_service[default]'
 end
+
+#******************************************************
+#
+# Node.jsの環境作成
+#
+#******************************************************
+nodejs_npm "forever"
