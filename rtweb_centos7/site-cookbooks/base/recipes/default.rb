@@ -32,3 +32,9 @@ end
 #
 #******************************************************
 nodejs_npm "forever"
+
+template "/etc/httpd/mods-available/proxy.conf" do
+  source "proxy.conf.erb"
+  mode 0644
+  notifies :restart, 'service[apache2]'
+end
