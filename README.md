@@ -1,6 +1,10 @@
 Build Web Environment
 =========
-Create web environment for multi porpose by chef.
+Create advanced environment for Magic3 by chef.
+
+Environment
+--------------
+* rtweb_centos7(Realtime Web on CentOS7)
 
 Base OS
 --------------
