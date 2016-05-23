@@ -1,4 +1,4 @@
-Build Web Environment
+Build Environment
 =========
 Create advanced environment for Magic3 by chef.
 
